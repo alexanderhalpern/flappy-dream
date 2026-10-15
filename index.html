@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Flappy Wiener</title>
 <style>
-  html,body{margin:0;height:100%;background:linear-gradient(#3aa8d8 0%,#bfe9f0 87.5%,#73bf2e 87.5%,#73bf2e 89.7%,#ded895 89.7%,#ded895 100%);overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
+  html,body{margin:0;height:100%;background:linear-gradient(#ff7b54 0%,#ffb26b 48.1%,#ffe8b0 87.5%,#ffc300 87.5%,#ffc300 89.7%,#c1121f 89.7%,#c1121f 100%);overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
   canvas{display:block;margin:0 auto;height:100%;max-width:100%}
 </style>
 </head>
@@ -57,12 +57,12 @@ function drawPipe(px,y,h,flip){
 }
 function rr(ax,ay,w,h,r){r=Math.min(r,w/2,h/2);x.beginPath();x.moveTo(ax+r,ay);x.arcTo(ax+w,ay,ax+w,ay+h,r);x.arcTo(ax+w,ay+h,ax,ay+h,r);x.arcTo(ax,ay+h,ax,ay,r);x.arcTo(ax,ay,ax+w,ay,r);x.closePath();}
 function draw(){
-  const sky=x.createLinearGradient(0,0,0,GROUND);sky.addColorStop(0,'#3aa8d8');sky.addColorStop(1,'#bfe9f0');
+  const sky=x.createLinearGradient(0,0,0,GROUND);sky.addColorStop(0,'#ff7b54');sky.addColorStop(.55,'#ffb26b');sky.addColorStop(1,'#ffe8b0');
   x.fillStyle=sky;x.fillRect(0,0,W,H);
-  x.fillStyle='rgba(255,255,255,.9)';clouds.forEach(cl=>{x.beginPath();x.arc(cl.x,cl.y,18,0,7);x.arc(cl.x+20,cl.y-8,22,0,7);x.arc(cl.x+42,cl.y,18,0,7);x.fill();});
+  x.fillStyle='rgba(255,246,228,.85)';clouds.forEach(cl=>{x.beginPath();x.arc(cl.x,cl.y,18,0,7);x.arc(cl.x+20,cl.y-8,22,0,7);x.arc(cl.x+42,cl.y,18,0,7);x.fill();});
   pipes.forEach(p=>{drawPipe(p.x,0,p.top,true);drawPipe(p.x,p.top+GAP,GROUND-p.top-GAP,false);});
-  x.fillStyle='#ded895';x.fillRect(0,GROUND,W,H-GROUND);x.fillStyle='#73bf2e';x.fillRect(0,GROUND,W,14);
-  x.fillStyle='#5a9e22';for(let i=0;i<W+40;i+=24){const o=(state==='play'?(frame*SPEED)%24:0);x.fillRect(i-o,GROUND+14,12,4);}
+  x.fillStyle='#c1121f';x.fillRect(0,GROUND,W,H-GROUND);x.fillStyle='#ffc300';x.fillRect(0,GROUND,W,14);
+  x.fillStyle='#e8a600';for(let i=0;i<W+40;i+=24){const o=(state==='play'?(frame*SPEED)%24:0);x.fillRect(i-o,GROUND+14,12,4);}
   // dachshund
   x.save();x.translate(bird.x,bird.y);x.rotate(Math.max(-.45,Math.min(1.0,bird.v/12)));
   const legs=state==='play'?Math.sin(frame/2.5)*4:0;
